@@ -39,7 +39,7 @@ const FilterSidebar = ({ data, onFilterChange }) => {
   };
 
   return (
-    <div className="p-4 pb-10 bg-[#F8F8F8]">
+    <div className="p-4 pb-10 pl-14 bg-[#F8F8F8]">
     
       <div className="text-black font-thin">
         {Object.entries(categories).map(([category, { count, subcategories }]) => (

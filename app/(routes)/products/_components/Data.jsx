@@ -8,8 +8,8 @@ const Data = ({data}) => {
         )
     }
     return (
-        <div className="mt-10">
-  <div className="grid grid-cols-4 gap-y-4 px-9">
+        <div className="mt-5">
+  <div className="grid grid-cols-4 gap-y-4 pr-9 ">
         {data.map((item) => (
           <div key={item.id} className="w-56 relative">
             <img src={item.img} alt={item.name} className="w-full h-auto" />

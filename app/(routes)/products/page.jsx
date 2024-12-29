@@ -125,16 +125,16 @@ const page = () => {
       }
     };
     return (
-        <div className="w-full h-screen mx-auto px-10 mt-20">
-        <div className="flex gap-24">
-          {/* Fixed Sidebar */}
-          <div className="w-[20%] fixed h-[90vh] overflow-y-auto">
+        <div className="w-full h-screen mx-auto mt-20">
+        <div className="flex gap-2">
+          {/* Sticky Sidebar */}
+          <div className="w-[25%] h-[90vh] overflow-y-auto sticky top-20">
             <FilterSidebar data={data1} onFilterChange={handleFilterChange} />
           </div>
       
           {/* Main Content */}
-          <div className="w-[80%] ml-[20%]">
-            <div className="relative w-full">
+          <div className="w-[75%]">
+            <div className="relative w-full mb-4">
               <input
                 type="text"
                 placeholder="Search"
@@ -148,6 +148,7 @@ const page = () => {
           </div>
         </div>
       </div>
+      
       
     );
 };

@@ -1,4 +1,5 @@
 "use client"
+
 import React from 'react';
 import { FaLock } from "react-icons/fa";
 import { FaRegMessage } from "react-icons/fa6";
@@ -7,6 +8,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { FaPhone } from "react-icons/fa6";
 
 const Footer = () => {
+  
   const data = [
     { id: 1, img: "https://fabrilife.com/img/sslcommerz.png", text: "All Secure payment methods", icon: FaLock },
     { id: 2, img: "https://fabrilife.com/img/sslcommerz.png", text: "Satisfaction Guaranteed", icon: HiOutlineEmojiHappy },

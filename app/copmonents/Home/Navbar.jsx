@@ -23,7 +23,7 @@ const Navbar = () => {
       {/* Add a dynamic height adjustment */}
       <div
         className={`transition-all duration-300 ${
-          showTopBar ? "h-[40px]" : "h-[0px]"
+          showTopBar ? "h-[40px]" : "h-[0.1px]"
         }`}
       >
         {showTopBar && (

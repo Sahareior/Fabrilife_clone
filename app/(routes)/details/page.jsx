@@ -117,7 +117,7 @@ const Details = () => {
             <h2 className="font-bold text-3xl text-gray-800">
               Mens Premium Sweatshirt - Delta Frost Midnight
             </h2>
-            <p className="font-extrabold text-2xl text-blue-500 mt-2">৳ 640</p>
+            <p className="font-extrabold text-2xl text-black mt-2">৳ 640</p>
           </div>
 
           {/* Size Selection */}

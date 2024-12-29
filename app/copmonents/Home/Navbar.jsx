@@ -1,9 +1,8 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
-import { FaQuestion } from "react-icons/fa";
 import { BsLightningChargeFill } from "react-icons/bs";
 import Link from "next/link";
 
@@ -12,7 +11,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowTopBar(window.scrollY === 0); 
+      setShowTopBar(window.scrollY === 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -20,37 +19,44 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div>
-      {showTopBar && (
-        <div className="flex justify-between bg-[#F3F3F3] p-1">
-          <div>
-            <h2 className="text-white p-2 flex justify-center items-center gap-2 px-2 text-sm bg-black font-bold">
-              <span className="text-yellow-300 text-xl">
-                <BsLightningChargeFill />
-              </span>
-              EXCLUSIVE T-SHIRTS ON SALE | Limited time only
-            </h2>
+    <>
+      {/* Add a dynamic height adjustment */}
+      <div
+        className={`transition-all duration-300 ${
+          showTopBar ? "h-[40px]" : "h-[0px]"
+        }`}
+      >
+        {showTopBar && (
+          <div className="flex justify-between bg-[#F3F3F3] p-1">
+            <div>
+              <h2 className="text-white p-2 flex justify-center items-center gap-2 px-2 text-sm bg-black font-bold">
+                <span className="text-yellow-300 text-xl">
+                  <BsLightningChargeFill />
+                </span>
+                EXCLUSIVE T-SHIRTS ON SALE | Limited time only
+              </h2>
+            </div>
+            <div className="flex gap-3">
+              <button className="w-52 bg-black p-1 text-white">
+                <p className="text-white text-sm">Order Bulk/ Corporate Sells</p>
+              </button>
+              <button className="w-52 bg-black p-1 text-white">
+                <p className="text-white text-sm">Store Location</p>
+              </button>
+              <button className="w-32 bg-[#F3F3F3] p-1 text-white">
+                <p className="text-slate-600">Help</p>
+              </button>
+              <button className="w-32 bg-[#F3F3F3] p-1 text-white">
+                <p className="text-blue-400">Login</p>
+              </button>
+            </div>
           </div>
-          <div className="flex gap-3">
-            <button className="w-52 bg-black p-1 text-white">
-              <p className="text-white text-sm">Order Bulk/ Corporate Sells</p>
-            </button>
-            <button className="w-52 bg-black p-1 text-white">
-              <p className="text-white text-sm">Store Location</p>
-            </button>
-            <button className="w-32 bg-[#F3F3F3] p-1 text-white">
-              <p className="text-slate-600">Help</p>
-            </button>
-            <button className="w-32 bg-[#F3F3F3] p-1 text-white">
-              <p className="text-blue-400">Login</p>
-            </button>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
 
+      {/* Navbar */}
       <div className="navbar fixed z-30 bg-white px-9 py-3">
         <div className="flex justify-between w-full">
-         
           <Link href="/">
             <img
               className="w-52 cursor-pointer"
@@ -82,7 +88,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

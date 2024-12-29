@@ -55,12 +55,12 @@ const Footer = () => {
   className=" w-96 border-b-2 border-white bg-transparent text-white placeholder-slate-400 focus:outline-none focus:ring-0"
 />
 
-      <button className="btn bg-[#EC971F] btn-sm">Subscribe</button>
+      <button className="btn rounded-none  bg-[#EC971F] btn-sm">Subscribe</button>
     </div>
   </div>
 
   {/* Contact Section */}
-  <div className="flex flex-col gap-2">
+  <div className="flex flex-col justify-center  gap-2">
     <div className="flex items-center gap-2">
       <p className="text-yellow-400 text-xl">
         <FaPhone />

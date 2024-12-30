@@ -204,7 +204,7 @@ const NewArrivals = () => {
       </div>
       <div className="grid grid-cols-6 gap-4 mt-6">
         {data.map((item) => (
-            <Link key={item.id} href="/details" >
+            <Link key={item.id} href="/products" >
           <div key={item.id} className="w-full relative">
             <img src={item.img} alt={item.name} className="w-full h-auto" />
             <h4 className="absolute top-0 left-1/2 transform -translate-x-1/2 rounded-b-xl bg-white px-4 py-1 w-40 text-center font-medium text-sm">
@@ -216,7 +216,8 @@ const NewArrivals = () => {
       </div>
       <div className="flex gap-4 justify-center items-center mt-16">
   {bannerData.map((item) => (
-    <div key={item.id} className="relative"> 
+      <Link key={item.id} href="/products" >
+    <div  className="relative"> 
       <div className="relative w-[27.5vw] ">
         {/* Image with gradient overlay for better text visibility */}
         <img
@@ -231,6 +232,7 @@ const NewArrivals = () => {
         {item.name}
       </h3>
     </div>
+    </Link>
   ))}
 </div>
 <MensTshirts bannerImg={banner1} bannerText={banner1Text} data={data1}/>

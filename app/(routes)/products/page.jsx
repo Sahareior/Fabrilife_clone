@@ -7,62 +7,86 @@ const data = [
     {
       id: 1,
       name: "Polo imffffsafg",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 299,
+      price: 100
     },
     {
       id: 2,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 899,
+      price: 200
     },
     {
       id: 3,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 399,
+      price: 140
     },
     {
       id: 4,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 799,
+      price: 230
     },
     {
       id: 22,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 2329,
+      price: 1030
     },
     {
       id: 33,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 2299,
+      price: 1020
     },
     {
       id: 44,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 399,
+      price: 244
     },
     {
       id: 222,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 221,
+      price: 133
     },
     {
       id: 333,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 234,
+      price: 112
     },
     {
       id: 444,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 299,
+      price: 200
     },
     {
       id: 44e4,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 4299,
+      price: 3200
     },
     {
       id: 4444,
       name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg"
+      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+      oldPrice: 299,
+      price: 100
     }
   ];
 
@@ -144,7 +168,7 @@ const page = () => {
                 <FaSearch />
               </p>
             </div>
-            <div className='p-12'>
+            <div className=''>
             <Data data={data} />
             </div>
           </div>

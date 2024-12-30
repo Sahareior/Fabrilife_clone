@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link";
+
 const Banner = () => {
     const data = [
         {
@@ -27,7 +29,9 @@ const Banner = () => {
                 <div className="flex w-1/2 justify-around">
                 {
                     data.map(items => (
-                        <button className="btn btn-ghost " key={items.id}><p className="text-xl">{items.name}</p></button>
+                       <Link  key={items.id} href="/details">
+                        <button className="btn btn-ghost "><p className="text-xl">{items.name}</p></button>
+                       </Link>
                     ))
                 }
                 </div>

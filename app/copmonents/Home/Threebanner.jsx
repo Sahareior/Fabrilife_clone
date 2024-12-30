@@ -18,7 +18,7 @@ const Threebanner = ({ data }) => {
                   src={item.img}
                   alt={item.name}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-100"></div>
               </div>
               {/* Text */}
               <h3 className="absolute bottom-4 left-1/2 transform -translate-x-1/2 font-bold text-white text-xl">

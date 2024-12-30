@@ -27,7 +27,7 @@ const MensTshirts = ({bannerText,bannerImg,data}) => {
           <div className="grid grid-cols-4 gap-4">
             {data.length>0 ?(
                 data.map((item) => (
-                <Link key={item.id} href="/details">
+                <Link key={item.id} href="/sijan">
                     <div  className="w-full relative shadow hover:shadow-md transition-shadow">
                       <img src={item.img} alt={item.name} className="w-full h-auto " />
                       <div className="absolute flex bottom-2 left-1/2 transform -translate-x-1/2 bg-white px-4 py-2 ">

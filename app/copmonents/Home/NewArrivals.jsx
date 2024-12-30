@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import BeforeFooter from "./BeforeFooter";
 import Fabrilife from "./Fabrilife";
 import MensTshirts from "./MensTshirts";
 import Threebanner from "./Threebanner";
+import { useEffect, useState } from "react";
 
 const data = [
   {
@@ -180,6 +182,15 @@ const data1 = [
 ];
 
 const NewArrivals = () => {
+   const [loading,setLoading] = useState(false)
+    useEffect(()=>{
+      setLoading(true)
+    },[])
+    if(loading === false){
+      return(
+        <p>daa</p>
+      )
+    }
  const banner1 = "https://fabrilife.com/image-gallery/638a77dd0caa8-square.jpg"
  const banner2 = "https://fabrilife.com/image-gallery/6389374585bcd-square.jpg"
  const banner3 = "https://fabrilife.com/image-gallery/638a77dd011dc-square.jpg"
@@ -193,12 +204,14 @@ const NewArrivals = () => {
       </div>
       <div className="grid grid-cols-6 gap-4 mt-6">
         {data.map((item) => (
+            <Link key={item.id} href="/details" >
           <div key={item.id} className="w-full relative">
             <img src={item.img} alt={item.name} className="w-full h-auto" />
             <h4 className="absolute top-0 left-1/2 transform -translate-x-1/2 rounded-b-xl bg-white px-4 py-1 w-40 text-center font-medium text-sm">
               {item.name}
             </h4>
           </div>
+          </Link>
         ))}
       </div>
       <div className="flex gap-4 justify-center items-center mt-16">

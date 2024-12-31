@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 
 const FilterSidebar = ({ data, onFilterChange }) => {
   const [selectedFilters, setSelectedFilters] = useState([]);
+     const [loading, setLoading] = useState(true);
+        useEffect(()=>{
+         
+            setLoading(false)
+        
+        },[])
+      
+        if (loading) {
+          return <h2 className="text-center mt-10">Loading...</h2>;
+        }
 
   const transformData = (data) => {
     const categories = {};
@@ -30,12 +41,12 @@ const FilterSidebar = ({ data, onFilterChange }) => {
       updatedFilters.push(item);
     }
     setSelectedFilters(updatedFilters);
-    onFilterChange(updatedFilters); // Pass updated filters to the parent
-    console.log("Selected Filters:", updatedFilters); // Log the selected filters
+    onFilterChange(updatedFilters); 
+    console.log("Selected Filters:", updatedFilters); 
   };
 
   return (
-    <div className="p-4 pb-10 pl-10 bg-[#F8F8F8]">
+    <div className="p-4 pb-10 pl-10  bg-[#F8F8F8]">
       <div className="text-black">
         {Object.entries(categories).map(([category, { count, subcategories }]) => (
           <div key={category} className="">
@@ -60,7 +71,7 @@ const FilterSidebar = ({ data, onFilterChange }) => {
                       onChange={() => handleCheckboxChange(sub.subcategory)}
                       className="accent-sky-500 w-4 h-4 border border-gray-300 bg-slate-200  checked:bg-sky-500 checked:border-sky-500 appearance-none cursor-pointer checked:relative checked:after:content-[''] checked:after:w-2 checked:after:h-2 checked:after:rounded-full checked:after:bg-white checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:transform checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
                     />
-                    <label htmlFor={sub.subcategory} className="text-xs font-extrabold">
+                    <label htmlFor={sub.subcategory} className="text-xs  font-extrabold">
                       {sub.subcategory}{" "}
                       <span className="text-black btn btn-ghost btn-xs">({sub.count})</span>
                     </label>
@@ -75,7 +86,7 @@ const FilterSidebar = ({ data, onFilterChange }) => {
                             onChange={() => handleCheckboxChange(type.type)}
                             className="accent-sky-500 w-4 h-4 border border-gray-300 bg-slate-200  checked:bg-sky-500 checked:border-sky-500 appearance-none cursor-pointer checked:relative checked:after:content-[''] checked:after:w-2 checked:after:h-2 checked:after:rounded-full checked:after:bg-white checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:transform checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
                           />
-                          <label htmlFor={type.type} className="text-sm font-thin  text-slate-700">
+                          <label htmlFor={type.type} className="text-sm roboto-regular  text-slate-700">
                             {type.type}{" "}
                             <span className="text-black btn btn-ghost btn-xs">({type.count})</span>
                           </label>

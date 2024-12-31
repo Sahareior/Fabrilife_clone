@@ -1,3 +1,4 @@
+import { addToDb } from "@/app/copmonents/others/useTools";
 import { useEffect, useState } from "react";
 
 const Modal = ({ open, onClose, item }) => {
@@ -12,6 +13,11 @@ const Modal = ({ open, onClose, item }) => {
   }, [open]);
 
   if (!isVisible) return null;
+
+  const addToCart =(data)=>{
+    addToDb(data.id,null)
+    // console.log(data)
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
@@ -56,7 +62,7 @@ const Modal = ({ open, onClose, item }) => {
               >
                 Close
               </button>
-              <button className="px-6 py-3 bg-yellow-500 text-gray-900 font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition">
+              <button onClick={()=> addToCart(item)} className="px-6 py-3 bg-yellow-500 text-gray-900 font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition">
                 Add to Cart
               </button>
             </div>

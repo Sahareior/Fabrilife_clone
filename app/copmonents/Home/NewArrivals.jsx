@@ -200,9 +200,9 @@ const NewArrivals = () => {
   return (
     <div className="w-[86%] mx-auto">
       <div className="bg-[#FCF4E9] p-6">
-        <h2 className="text-center text-3xl uppercase text-yellow-700 font-semibold">New Arrival</h2>
+        <h2 className="text-center text-[36px] uppercase lato-b  text-yellow-700 font-semibold">New Arrival</h2>
       </div>
-      <div className="grid grid-cols-6 gap-4 mt-6">
+      <div className="grid md:grid-cols-6 grid-cols-2 gap-4 mt-6">
         {data.map((item) => (
             <Link key={item.id} href="/products" >
           <div key={item.id} className="w-full relative">
@@ -214,11 +214,11 @@ const NewArrivals = () => {
           </Link>
         ))}
       </div>
-      <div className="flex gap-4 justify-center items-center mt-16">
+      <div className="md:flex gap-4 justify-center items-center mt-16">
   {bannerData.map((item) => (
       <Link key={item.id} href="/products" >
-    <div  className="relative"> 
-      <div className="relative w-[27.5vw] ">
+    <div  className="relative mt-5 md:mt-0"> 
+      <div className="relative md:w-[27.5vw] ">
         {/* Image with gradient overlay for better text visibility */}
         <img
           className="w-full opacity-90 shadow-lg"
@@ -243,10 +243,10 @@ const NewArrivals = () => {
 <Threebanner data={bannerData3}/>
 <MensTshirts bannerImg={banner3} bannerText={banner1Text} data={data1}/>
 <MensTshirts bannerImg={banner4} bannerText={banner1Text} data={data1}/>
-<div className="bg-[#CCF7F1] text-center mt-10 p-5">
-  <h2 className="text-xl">The Best Quality Socks you can find in Bangladesh</h2>
-  <h2 className="4xl">Premium Antibacterial Socks</h2>
-  <p>Visit Store</p>
+<div className="bg-[#CCF7F1] text-center mt-10 py-1 px-5">
+  <h2 className="text-[14px] text-[#009688]">The Best Quality Socks you can find in Bangladesh</h2>
+  <h2 className="text-[32px] font-bold text-[#009688]">Premium Antibacterial Socks</h2>
+  <p className="text-[14px] text-[#009688]">Visit Store</p>
 </div>
 <MensTshirts bannerImg={banner5} bannerText={banner1Text} data={data1}/>
 <BeforeFooter />

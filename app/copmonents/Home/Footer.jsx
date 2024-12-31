@@ -17,31 +17,35 @@ const Footer = () => {
 
   return (
     <div>
-      <div className="flex justify-center bg-[#F3F3F3] items-center gap-x-10 mt-6">
-        {data.map((item) => (
-      <div
-      key={item.id}
-      className="flex flex-col items-center text-center  pt-8  hover:shadow-lg transition-shadow duration-300"
-    >
-      {/* Icon */}
-      <div className="text-2xl  text-black mb-4"> {React.createElement(item.icon)}</div>
-      {/* Text */}
-      <p className="text-gray-700 font-semibold">{item.text}</p>
-          
-      {/* Image */}
-      <img
-        src={item.img}
-        alt={item.text}
-        className=" object-contain h-24 w-80 mb-1"
-      />
-
-    </div>
-        ))}
+      <div className="md:flex justify-center bg-[#F3F3F3] items-center gap-x-10 mt-6">
+        {data.length>0 ?(
+          data.map((item) => (
+            <div
+            key={item.id}
+            className="flex flex-col items-center text-center  pt-8  hover:shadow-lg transition-shadow duration-300"
+          >
+            {/* Icon */}
+            <div className="text-2xl  text-black mb-4"> {React.createElement(item.icon)}</div>
+            {/* Text */}
+            <p className="text-gray-700 font-semibold">{item.text}</p>
+                
+            {/* Image */}
+            <img
+              src={item.img}
+              alt={item.text}
+              className=" object-contain h-24 w-80 mb-1"
+            />
+      
+          </div>
+              ))
+        ):(
+          <p>Loading..</p>
+        )}
       </div>
 
       {/* Footer Section */}
 <div>
-<div className="bg-[#37383F] flex gap-14 justify-start pl-36  px-6 py-14">
+<div className="bg-[#37383F] flex flex-col md:flex-row gap-14 justify-start md:pl-36  px-6 py-14">
   {/* Subscription Section */}
   <div className="flex flex-col gap-4">
     <div className="flex items-center gap-2">
@@ -62,7 +66,7 @@ const Footer = () => {
   </div>
 
   {/* Contact Section */}
-  <div className="flex flex-col justify-center  gap-2">
+  <div className="md:flex flex-col justify-center  gap-2">
     <div className="flex items-center gap-2">
       <p className="text-yellow-400 text-xl">
         <FaPhone />
@@ -78,7 +82,7 @@ const Footer = () => {
   </div>
 </div>
 
-<footer className="footer sm:footer-horizontal bg-[#58595B] text-neutral-content justify-items-center grid-rows-2 p-10">
+<footer className="footer sm:footer-horizontal bg-[#58595B] text-neutral-content md:justify-items-center grid-cols-2 md:grid-rows-2 p-10">
         
         <nav>
           <h6 className="footer-title">Services</h6>

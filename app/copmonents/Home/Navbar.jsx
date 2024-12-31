@@ -5,9 +5,42 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import { BsLightningChargeFill } from "react-icons/bs";
 import Link from "next/link";
+import { getShoppingCart } from "../others/useTools";
+import Navcart from "./Navcart";
+import { FaArrowRight } from "react-icons/fa";
+import { IoLocationOutline } from "react-icons/io5";
+import { FaTruck } from "react-icons/fa";
+import { FaRegQuestionCircle } from "react-icons/fa";
+import { IoMdExit } from "react-icons/io";
 
 const Navbar = () => {
   const [showTopBar, setShowTopBar] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState([]);
+
+  const fetchCart = () => {
+    const cartData = getShoppingCart();
+    setCart(cartData);
+  };
+
+  useEffect(() => {
+    // Fetch initial cart data
+    fetchCart();
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    // Listen for changes in the cart (e.g., localStorage updates)
+    const handleStorageChange = () => {
+      fetchCart();
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,11 +51,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  if (loading) {
+    return <h2 className="text-center mt-10">Loading...</h2>;
+  }
+
+  const length = Object.keys(cart).length;
+
   return (
     <>
       {/* Add a dynamic height adjustment */}
       <div
-        className={`transition-all duration-300 ${
+        className={`transition-all hidden md:block duration-300 ${
           showTopBar ? "h-[40px]" : "h-[0.1px]"
         }`}
       >
@@ -33,21 +72,21 @@ const Navbar = () => {
                 <span className="text-yellow-300 text-xl">
                   <BsLightningChargeFill />
                 </span>
-                EXCLUSIVE T-SHIRTS ON SALE | Limited time only
+                EXCLUSIVE T-SHIRTS ON SALE | Limited time only<FaArrowRight />
               </h2>
             </div>
             <div className="flex gap-3">
               <button className="w-52 bg-black p-1 text-white">
-                <p className="text-white text-sm">Order Bulk/ Corporate Sells</p>
+                <p className="text-white flex justify-center items-center gap-2 text-sm">Order Bulk/ Corporate Sells<FaTruck /></p>
               </button>
-              <button className="w-52 bg-black p-1 text-white">
-                <p className="text-white text-sm">Store Location</p>
-              </button>
-              <button className="w-32 bg-[#F3F3F3] p-1 text-white">
-                <p className="text-slate-600">Help</p>
+              <button className="w-52 bg-black p-1 items-center flex justify-center text-white">
+                <p className="text-white text-sm flex items-center gap-3">Store Location<IoLocationOutline /></p>
               </button>
               <button className="w-32 bg-[#F3F3F3] p-1 text-white">
-                <p className="text-blue-400">Login</p>
+                <p className="text-slate-600 flex justify-center items-center gap-2">Help<FaRegQuestionCircle /></p>
+              </button>
+              <button className="w-32 bg-[#F3F3F3] p-1 text-white">
+                <p className="text-blue-400 flex justify-center items-center gap-2"><IoMdExit />Login</p>
               </button>
             </div>
           </div>
@@ -55,7 +94,7 @@ const Navbar = () => {
       </div>
 
       {/* Navbar */}
-      <div className="navbar fixed z-30 bg-white px-9 py-3">
+      <div className="navbar hidden md:block fixed z-30 bg-white px-9 py-4">
         <div className="flex justify-between w-full">
           <Link href="/">
             <img
@@ -77,15 +116,7 @@ const Navbar = () => {
               <FaSearch />
             </p>
           </div>
-
-          <div className="flex justify-center pr-14 items-center gap-2">
-            <a className="text-xl">
-              <FaCartShopping />
-            </a>
-            <p className="text-white mt-4 px-1 rounded-full text-sm bg-sky-500">
-              0
-            </p>
-          </div>
+<Navcart />
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import Data from './_components/Data';
 import FilterSidebar from './_components/Filter';
@@ -140,6 +140,16 @@ const data1 = [
 
 const page = () => {
     const [filteredData, setFilteredData] = useState(data);
+     const [loading, setLoading] = useState(true);
+        useEffect(()=>{
+         
+            setLoading(false)
+        
+        },[])
+      
+        if (loading) {
+            return <h2 className="text-center mt-10">Loading...</h2>;
+          }
 
     const handleFilterChange = (filters) => {
       if (filters.length === 0) {
@@ -152,13 +162,13 @@ const page = () => {
         <div className="w-full h-screen mx-auto mt-20">
         <div className="flex gap-2">
           {/* Sticky Sidebar */}
-          <div className="w-[25%] h-[90vh] overflow-y-auto sticky top-20">
+          <div className="w-[25%] h-[90vh] hidden md:block overflow-y-auto sticky top-20">
             <FilterSidebar data={data1} onFilterChange={handleFilterChange} />
           </div>
       
           {/* Main Content */}
-          <div className="w-[75%]">
-            <div className="relative w-[94%] mb-4">
+          <div className="md:w-[75%] mx-auto w-full">
+            <div className="relative w-full md:w-[94%] mb-4">
               <input
                 type="text"
                 placeholder="Search"

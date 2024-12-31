@@ -1,22 +1,26 @@
 'use client';
 
-import Link from "next/link"; 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
+import useStore from "@/app/store/useStore";
+
 
 const Data = ({ data }) => {
   const [open, setOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
-   const [loading, setLoading] = useState(true);
-      useEffect(()=>{
-       
-          setLoading(false)
-      
-      },[])
-    
-      if (loading) {
-        return <h2 className="text-center mt-10">Loading...</h2>;
-      }
+  const [loading, setLoading] = useState(true);
+
+  // Zustand hooks
+  const setSelectedItem = useStore((state) => state.setSelectedItem);
+  const selectedItem = useStore((state) => state.selectedItem);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <h2 className="text-center mt-10">Loading...</h2>;
+  }
 
   const calculateDiscounts = (price, oldPrice) => {
     let discount = 0;
@@ -33,19 +37,20 @@ const Data = ({ data }) => {
 
   const closeModal = () => {
     setOpen(false);
-    setSelectedItem(null);
   };
-  
+
+  const handleDetailsClick = (item) => {
+    setSelectedItem(item); // Set the selected item in the Zustand store
+  };
 
   return (
     <div className="mt-5">
-      <div 
-        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8  sm:pr-6 lg:pr-9">
-        {data.length>0?(
+      <div className="grid grid-cols-2 justify-items-center sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 sm:pr-6 lg:pr-9">
+        {data.length > 0 ? (
           data.map((item) => (
-<div key={item.id} className="md:w-56 w-48">
-<Link  href="/details" >
-              <img src={item.img} alt={item.name} className="w-full h-auto" />
+            <div key={item.id} className="md:w-56 w-[50vw]">
+              <Link href="/details" onClick={() => handleDetailsClick(item)}>
+                <img src={item.img} alt={item.name} className="w-full h-auto" />
               </Link>
               <h4 className="text-center font-bold">{item.name}</h4>
               <div className="space-y-3 mt-2">
@@ -56,17 +61,16 @@ const Data = ({ data }) => {
                   <p className="text-xl font-bold text-slate-500">৳{item.price}</p>
                   <p className="line-through text-red-500 font-bold text-sm">৳{item.oldPrice}</p>
                 </div>
-                <button 
-                  className="btn bg-black text-white btn-sm w-full" 
+                <button
+                  className="btn bg-black text-white btn-sm w-full"
                   onClick={() => handleBuyNow(item)}
                 >
                   Buy Now
                 </button>
               </div>
             </div>
-
           ))
-        ):(
+        ) : (
           <p>Loading...</p>
         )}
       </div>

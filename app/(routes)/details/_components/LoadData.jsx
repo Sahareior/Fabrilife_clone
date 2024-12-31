@@ -9,7 +9,7 @@ const LoadData = ({data,selectedItem}) => {
         {data.length>0 ? (
           data.map((item) => (
             <div key={item.id} onClick={()=> selectedItem(item)}>
-                    <div className="w-full relative">
+                    <div className="w-full cursor-pointer relative">
                     <img src={item.img} alt={item.name} className="w-full h-auto" />
                     <h4 className="absolute bottom-0 left-1/2 transform -translate-x-1/2  bg-white px-4 py-1 w-40 text-center font-medium text-sm">
                     <div className="flex items-center justify-center mx-auto text-center gap-3 text-gray-600 mt-2">

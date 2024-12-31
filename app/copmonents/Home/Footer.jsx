@@ -82,7 +82,7 @@ const Footer = () => {
   </div>
 </div>
 
-<footer className="footer sm:footer-horizontal bg-[#58595B] text-neutral-content md:justify-items-center grid-cols-2 md:grid-rows-2 p-10">
+<footer className="footer sm:footer-horizontal bg-[#58595B] text-neutral-content md:justify-items-center grid-rows-2 p-10">
         
         <nav>
           <h6 className="footer-title">Services</h6>

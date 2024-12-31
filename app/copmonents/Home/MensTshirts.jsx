@@ -38,7 +38,7 @@ const MensTshirts = ({bannerText,bannerImg,data}) => {
                       <img src={item.img} alt={item.name} className="w-full h-auto " />
                       <div className="absolute flex bottom-2 left-1/2 transform -translate-x-1/2 bg-white px-4 py-2 ">
                         <p className="text-xs text-gray-500 line-through">${item.price}</p>
-                        <p className="text-sm font-semibold text-red-600">${item.discountPrice}</p>
+                        <p className="text-sm font-semibold text-red-600">${item.oldPrice}</p>
                       </div>
                     </div>
                 </Link>

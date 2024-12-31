@@ -1,145 +1,191 @@
-import React, { useState } from "react";
-
-const data = [
-  { category: "New Arrival", count: 63 },
-  { category: "Top Selling", count: 228 },
-  { category: "Free Delivery", count: 541 },
-  {
-    category: "Mens",
-    count: 943,
-    subcategories: [
-      {
-        subcategory: "Half Sleeve T-shirt",
-        count: 319,
-        types: [
-          { type: "Blank", count: 51 },
-          { type: "Cut & Stitch", count: 24 },
-          { type: "Cut & Stitch (Designer Edition)", count: 28 },
-          { type: "Drop Shoulder T-shirt", count: 7 },
-          { type: "Printed", count: 151 },
-        ],
-      },
-      {
-        subcategory: "Full Sleeve T-shirt",
-        count: 143,
-        types: [
-          { type: "Blank", count: 46 },
-          { type: "Cut & Stitch", count: 18 },
-          { type: "Cut & Stitch (Designer Edition)", count: 32 },
-          { type: "Printed", count: 47 },
-        ],
-      },
-      {
-        subcategory: "Shirt",
-        count: 52,
-        types: [
-          { type: "Casual Shirt", count: 38 },
-          { type: "Formal Shirt", count: 14 },
-        ],
-      },
-    ],
-  },
-];
-
-const transformData = (data) => {
-  const categories = {};
-  data.forEach((item) => {
-    categories[item.category] = { count: item.count, subcategories: [] };
-    if (item.subcategories) {
-      item.subcategories.forEach((sub) => {
-        categories[item.category].subcategories.push({
-          subcategory: sub.subcategory,
-          count: sub.count,
-          types: sub.types,
-        });
-      });
-    }
-  });
-  return categories;
-};
-
-const App = () => {
-  const categories = transformData(data);
-console.log(categories)
-  const handleFilterChange = (selectedFilters) => {
-    console.log("Selected Filters:", selectedFilters);
-  };
-
-  return (
-    <div className="flex">
-      <FilterSidebar categories={categories} onFilterChange={handleFilterChange} />
-    </div>
-  );
-};
-
-const FilterSidebar = ({ categories, onFilterChange }) => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
-
-  const handleCheckboxChange = (category) => {
-    let updatedFilters = [...selectedFilters];
-    if (updatedFilters.includes(category)) {
-      updatedFilters = updatedFilters.filter((item) => item !== category);
-    } else {
-      updatedFilters.push(category);
-    }
-    setSelectedFilters(updatedFilters);
-    onFilterChange(updatedFilters); // Pass updated filters to the parent
-  };
-
-  return (
-    <div className="p-4 space-y-2 bg-[#F8F8F8]">
-      <h2 className="text-lg font-bold text-black">Filters</h2>
-      <div className="text-black font-thin">
-        {Object.entries(categories).map(([category, { count, subcategories }]) => (
-          <div key={category} className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id={category}
-                onChange={() => handleCheckboxChange(category)}
-                className="accent-sky-500"
-              />
-              <label htmlFor={category} className="text-sm font-medium">
-                {category} <span className="text-black btn btn-ghost btn-xs">({count})</span>
-              </label>
-            </div>
-            {/* Display subcategories if they exist */}
-            {subcategories && subcategories.map((sub) => (
-              <div key={sub.subcategory} className="ml-4 space-y-1">
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    id={sub.subcategory}
-                    onChange={() => handleCheckboxChange(sub.subcategory)}
-                    className="accent-sky-500"
-                  />
-                  <label htmlFor={sub.subcategory} className="text-sm">
-                    {sub.subcategory} <span className="text-black btn btn-ghost btn-xs">({sub.count})</span>
-                  </label>
-                </div>
-                {/* Display types under the subcategory */}
-                {sub.types && sub.types.map((type) => (
-                  <div key={type.type} className="ml-6 space-y-1">
-                    <div className="flex items-center space-x-2">
-                      <input
-                        type="checkbox"
-                        id={type.type}
-                        onChange={() => handleCheckboxChange(type.type)}
-                        className="accent-sky-500"
-                      />
-                      <label htmlFor={type.type} className="text-sm">
-                        {type.type} <span className="text-black btn btn-ghost btn-xs">({type.count})</span>
-                      </label>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        ))}
+<div className="navbar bg-base-100 shadow-sm">
+  <div className="navbar-start">
+    <div className="dropdown">
+      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
       </div>
+      <ul
+        tabIndex={0}
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li><a>Item 1</a></li>
+        <li>
+          <a>Parent</a>
+          <ul className="p-2">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </li>
+        <li><a>Item 3</a></li>
+      </ul>
     </div>
+    <a className="btn btn-ghost text-xl">daisyUI</a>
+  </div>
+  <div className="navbar-center hidden lg:flex">
+  <div className="navbar hidden md:block fixed z-30 bg-white px-9 py-4">
+        <div className="flex justify-between w-full">
+          <Link href="/">
+            <img
+              className="w-52 cursor-pointer"
+              src="https://fabrilife.com/img/fabrilife.svg"
+              alt="Logo"
+            />
+          </Link>
+
+          <h3>Shop</h3>
+
+          <div className="relative w-[600px]">
+            <input
+              type="text"
+              placeholder="Search"
+              className="w-full pr-10 h-10 border border-gray-300 rounded-none"
+            />
+            <p className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500">
+              <FaSearch />
+            </p>
+          </div>
+<Navcart />
+        </div>
+      </div>
+  </div>
+</div>
+
+// 
+
+
+"use client";
+
+import { useEffect, useState } from "react";
+import { FaCartShopping } from "react-icons/fa6";
+import { FaSearch } from "react-icons/fa";
+import { BsLightningChargeFill } from "react-icons/bs";
+import Link from "next/link";
+import { getShoppingCart } from "../others/useTools";
+import Navcart from "./Navcart";
+import { FaArrowRight } from "react-icons/fa";
+import { IoLocationOutline } from "react-icons/io5";
+import { FaTruck } from "react-icons/fa";
+import { FaRegQuestionCircle } from "react-icons/fa";
+import { IoMdExit } from "react-icons/io";
+
+const Navbar = () => {
+  const [showTopBar, setShowTopBar] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState([]);
+
+  const fetchCart = () => {
+    const cartData = getShoppingCart();
+    setCart(cartData);
+  };
+
+  useEffect(() => {
+    // Fetch initial cart data
+    fetchCart();
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    // Listen for changes in the cart (e.g., localStorage updates)
+    const handleStorageChange = () => {
+      fetchCart();
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowTopBar(window.scrollY === 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  if (loading) {
+    return <h2 className="text-center mt-10">Loading...</h2>;
+  }
+
+  const length = Object.keys(cart).length;
+
+  return (
+    <>
+      {/* Add a dynamic height adjustment */}
+      <div
+        className={`transition-all hidden md:block duration-300 ${
+          showTopBar ? "h-[40px]" : "h-[0.1px]"
+        }`}
+      >
+        {showTopBar && (
+          <div className="flex justify-between bg-[#F3F3F3] p-1">
+            <div>
+              <h2 className="text-white p-2 flex justify-center items-center gap-2 px-2 text-sm bg-black font-bold">
+                <span className="text-yellow-300 text-xl">
+                  <BsLightningChargeFill />
+                </span>
+                EXCLUSIVE T-SHIRTS ON SALE | Limited time only<FaArrowRight />
+              </h2>
+            </div>
+            <div className="flex gap-3">
+              <button className="w-52 bg-black p-1 text-white">
+                <p className="text-white flex justify-center items-center gap-2 text-sm">Order Bulk/ Corporate Sells<FaTruck /></p>
+              </button>
+              <button className="w-52 bg-black p-1 items-center flex justify-center text-white">
+                <p className="text-white text-sm flex items-center gap-3">Store Location<IoLocationOutline /></p>
+              </button>
+              <button className="w-32 bg-[#F3F3F3] p-1 text-white">
+                <p className="text-slate-600 flex justify-center items-center gap-2">Help<FaRegQuestionCircle /></p>
+              </button>
+              <button className="w-32 bg-[#F3F3F3] p-1 text-white">
+                <p className="text-blue-400 flex justify-center items-center gap-2"><IoMdExit />Login</p>
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Navbar */}
+      <div className="navbar hidden md:block fixed z-30 bg-white px-9 py-4">
+        <div className="flex justify-between w-full">
+          <Link href="/">
+            <img
+              className="w-52 cursor-pointer"
+              src="https://fabrilife.com/img/fabrilife.svg"
+              alt="Logo"
+            />
+          </Link>
+
+          <h3>Shop</h3>
+
+          <div className="relative w-[600px]">
+            <input
+              type="text"
+              placeholder="Search"
+              className="w-full pr-10 h-10 border border-gray-300 rounded-none"
+            />
+            <p className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500">
+              <FaSearch />
+            </p>
+          </div>
+<Navcart />
+        </div>
+      </div>
+    </>
   );
 };
 
-export default App;
+export default Navbar;

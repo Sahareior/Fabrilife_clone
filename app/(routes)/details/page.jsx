@@ -4,6 +4,7 @@ import { FaInstagram } from "react-icons/fa";
 import { IoLogoTwitter } from "react-icons/io";
 import LoadData from "./_components/LoadData";
 import { addToDb } from "@/app/copmonents/others/useTools";
+import useStore from "@/app/store/useStore";
 
 
 const data1 = [
@@ -16,78 +17,78 @@ const data1 = [
   },
   {
     id: 2,
-    name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+       name: "Polo img",
+    img: "https://fabrilife.com/image-gallery/61a794e1aa1f4-square.jpg",
     oldPrice: 899,
     price: 200
   },
   {
     id: 3,
     name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    img: "https://fabrilife.com/image-gallery/638741f4b169a-square.jpg",
     oldPrice: 399,
     price: 140
   },
   {
     id: 4,
-    name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+   name: "Polo img",
+    img: "https://fabrilife.com/image-gallery/638741f4b7222-square.jpg",
     oldPrice: 799,
     price: 230
   },
   {
     id: 22,
     name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    img: "https://fabrilife.com/image-gallery/638741f4b7330-square.jpg",
     oldPrice: 2329,
     price: 1030
   },
   {
     id: 33,
-    name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    name: "Polo imge 33",
+    img: "https://fabrilife.com/image-gallery/638741f4d4651-square.jpg",
     oldPrice: 2299,
     price: 1020
   },
   {
     id: 44,
-    name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    name: "Polo img 44",
+    img: "https://fabrilife.com/image-gallery/61a794e1a5fec-square.jpg",
     oldPrice: 399,
     price: 244
   },
   {
     id: 222,
-    name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    name: "Polo img 333",
+    img: "https://fabrilife.com/image-gallery/61a794e1a15bc-square.jpg",
     oldPrice: 221,
     price: 133
   },
   {
     id: 333,
-    name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    name: "Polo img 212",
+    img: "https://fabrilife.com/products/65a7c56293326-square.jpg",
     oldPrice: 234,
     price: 112
   },
   {
     id: 444,
-    name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    name: "Polo img 1121",
+    img: "https://fabrilife.com/products/675ea4954d90e-square.jpg",
     oldPrice: 299,
     price: 200
   },
   {
     id: 44e4,
-    name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    name: "Polo img 444" ,
+    img: "https://fabrilife.com/products/67611c88ed014-square.jpg",
     oldPrice: 4299,
     price: 3200
   },
   {
     id: 4444,
-    name: "Polo img",
-    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    name: "Polo img 300",
+    img: "https://fabrilife.com/products/666ad49c8dc2f-square.jpg",
     oldPrice: 299,
     price: 100
   }
@@ -95,9 +96,9 @@ const data1 = [
 
 const Details = () => {
 
-
+  const selectedData = useStore((state) => state.selectedItem);
   const [quantity, setQuantity] = useState(1);
-  const [displayItem, setDisplayItem] = useState();
+  const [displayItem, setDisplayItem] = useState(selectedData);
 
   const selectedItem = (item) => {
     setDisplayItem(item);
@@ -127,25 +128,25 @@ const Details = () => {
     }
     addToDb(id, quantity); // Pass the correct ID and quantity
   };
-
+console.log(selectedData)
   return (
-<div className="w-full md:mt-16 p-7 md:w-[87%] mx-auto">
+<div className="w-full md:mt-16 md:p-7 p-1 md:w-[87%] mx-auto">
 <div className="bg-gray-50 min-h-screen flex flex-col lg:flex-row gap-6 items-center lg:items-start mt-6">
       <div className="flex flex-col lg:flex-row gap-5 bg-white  justify-center rounded-lg">
         {/* Product Image and Frequently Bought Together */}
         <div className="flex md:w-[570px] flex-col items-center">
           <img
             className=" md:h-[650px] h-full w-full rounded-lg shadow-md"
-            src="https://fabrilife.com/products/67611c88e9124-square.jpg?v=20"
+            src={displayItem?.img}
             alt="Mens Premium Sweatshirt"
           />
           <div className="mt-4 ">
             <h1 className=" mb-3  text-lg">Frequently Bought Together</h1>
            <div className="bg-black w-full h-1"></div>
-           <div className="flex  gap-6 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+           <div className="flex  md:gap-6 md:p-4 gap-2 p-1 bg-white rounded-lg shadow-md hover:shadow-lg transition">
   {/* Product Image */}
   <img
-    className="w-44 h-44 object-cover rounded-lg border border-gray-200"
+    className="w-40 bg-black h-44 object-cover rounded-lg border border-gray-200"
     src="https://fabrilife.com/products/6743162d5c2d3-square.jpg"
     alt="Mens Premium Sports Active Wear Full Sleeve T-shirt"
   />
@@ -177,9 +178,9 @@ const Details = () => {
         <div className="flex flex-col w-full md:w-[50%] gap-4">
           <div>
             <h2 className=" text-[24px] text-gray-800">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, vitae.
+           {displayItem?.name}
             </h2>
-            <p className="font-extrabold text-2xl text-black mt-2">৳ 1200</p>
+            <p className="font-extrabold text-2xl text-black mt-2">৳ {displayItem?.price}</p>
           </div>
 
           {/* Size Selection */}

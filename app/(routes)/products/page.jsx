@@ -4,91 +4,91 @@ import { FaSearch } from "react-icons/fa";
 import Data from './_components/Data';
 import FilterSidebar from './_components/Filter';
 const data = [
-    {
-      id: 1,
-      name: "Polo imffffsafg",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 299,
-      price: 100
-    },
-    {
-      id: 2,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 899,
-      price: 200
-    },
-    {
-      id: 3,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 399,
-      price: 140
-    },
-    {
-      id: 4,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 799,
-      price: 230
-    },
-    {
-      id: 22,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 2329,
-      price: 1030
-    },
-    {
-      id: 33,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 2299,
-      price: 1020
-    },
-    {
-      id: 44,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 399,
-      price: 244
-    },
-    {
-      id: 222,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 221,
-      price: 133
-    },
-    {
-      id: 333,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 234,
-      price: 112
-    },
-    {
-      id: 444,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 299,
-      price: 200
-    },
-    {
-      id: 44e4,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 4299,
-      price: 3200
-    },
-    {
-      id: 4444,
-      name: "Polo img",
-      img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
-      oldPrice: 299,
-      price: 100
-    }
-  ];
+  {
+    id: 1,
+    name: "Polo imffffsafg",
+    img: "https://fabrilife.com/image-gallery/61a794e19d4b4-square.jpg",
+    oldPrice: 299,
+    price: 100
+  },
+  {
+    id: 2,
+       name: "Polo img",
+    img: "https://fabrilife.com/image-gallery/61a794e1aa1f4-square.jpg",
+    oldPrice: 899,
+    price: 200
+  },
+  {
+    id: 3,
+    name: "Polo img",
+    img: "https://fabrilife.com/image-gallery/638741f4b169a-square.jpg",
+    oldPrice: 399,
+    price: 140
+  },
+  {
+    id: 4,
+   name: "Polo img",
+    img: "https://fabrilife.com/image-gallery/638741f4b7222-square.jpg",
+    oldPrice: 799,
+    price: 230
+  },
+  {
+    id: 22,
+    name: "Polo img",
+    img: "https://fabrilife.com/image-gallery/638741f4b7330-square.jpg",
+    oldPrice: 2329,
+    price: 1030
+  },
+  {
+    id: 33,
+    name: "Polo imge 33",
+    img: "https://fabrilife.com/image-gallery/638741f4d4651-square.jpg",
+    oldPrice: 2299,
+    price: 1020
+  },
+  {
+    id: 44,
+    name: "Polo img 44",
+    img: "https://fabrilife.com/image-gallery/61a794e1a5fec-square.jpg",
+    oldPrice: 399,
+    price: 244
+  },
+  {
+    id: 222,
+    name: "Polo img 333",
+    img: "https://fabrilife.com/image-gallery/61a794e1a15bc-square.jpg",
+    oldPrice: 221,
+    price: 133
+  },
+  {
+    id: 333,
+    name: "Polo img 212",
+    img: "https://fabrilife.com/products/65a7c56293326-square.jpg",
+    oldPrice: 234,
+    price: 112
+  },
+  {
+    id: 444,
+    name: "Polo img 1121",
+    img: "https://fabrilife.com/products/675ea4954d90e-square.jpg",
+    oldPrice: 299,
+    price: 200
+  },
+  {
+    id: 44e4,
+    name: "Polo img 444" ,
+    img: "https://fabrilife.com/products/67611c88ed014-square.jpg",
+    oldPrice: 4299,
+    price: 3200
+  },
+  {
+    id: 4444,
+    name: "Polo img 300",
+    img: "https://fabrilife.com/products/666ad49c8dc2f-square.jpg",
+    oldPrice: 299,
+    price: 100
+  }
+];
 
 const data1 = [
     { category: "New Arrival", count: 63 },

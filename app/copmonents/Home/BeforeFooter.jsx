@@ -54,7 +54,7 @@ const BeforeFooter = () => {
     />
     {/* Overlay with text */}
     <div className="absolute  "></div>
-    <div className='absolute text-right top-1/2 md:top-1/3 right-6 '>
+    <div className='absolute text-right top-0 md:top-1/3 right-6 '>
         <h2 className='md:text-2xl  font-medium'>Earn Money</h2>
         <h3 className='uppercase text-wrap text-[#2B9C94] text-5xl'>Join Fabrisquad</h3>
         <p className='font-semibold'>An Affiliate programm by fabrilife</p>

@@ -49,7 +49,7 @@ const Banner = () => {
         </div>
 
         {/* App Promo */}
-        <div className="flex flex-col sm:flex-row sm:gap-3 items-center text-center">
+        <div className="flex flex-col sm:flex-row gap-2 mb-2  items-center text-center">
           <p className="text-sm sm:text-xl bg-[#F1F1F1] px-3 py-2 sm:w-56">
             Get 5% off an app
           </p>

@@ -169,7 +169,7 @@ const page = () => {
       
     
           <div className="md:w-[75%] mx-auto w-full">
-            <div className="relative w-full  md:w-[94%] mb-4">
+            <div className="relative w-[94%] px-1 mx-auto mb-4">
               <input
                 type="text"
                 placeholder="Search"

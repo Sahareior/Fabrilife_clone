@@ -198,7 +198,7 @@ const NewArrivals = () => {
  const banner5 = "https://fabrilife.com/image-gallery/638a77dcea895-square.jpg"
  const banner1Text = "Mens Full Sleeves T-Shirts"
   return (
-    <div className="w-[86%] mx-auto">
+    <div className="md:w-[86%] w-[95%] overflow-x-hidden mx-auto">
       <div className="bg-[#FCF4E9] p-6">
         <h2 className="text-center text-[36px] uppercase lato-b  text-yellow-700 font-semibold">New Arrival</h2>
       </div>

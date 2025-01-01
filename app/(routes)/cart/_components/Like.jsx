@@ -3,8 +3,8 @@ import React from 'react';
 
 const Like = ({data}) => {
     return (
-        <div className='mt-24 border border-slate-300'>
-                <div className="grid grid-cols-4 gap-y-10 gap-4 py-1 mt-12">
+        <div className='md:mt-24 mt-14 border border-slate-300'>
+                <div className="grid md:grid-cols-4 grid-cols-2 gap-y-10 gap-4 py-1 mt-12">
         {data.length>0? (
             data.map((item) => (
                 <Link key={item.id} href="/products" >

@@ -17,6 +17,11 @@ const Navbar = () => {
   const [showTopBar, setShowTopBar] = useState(true);
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
 
   const fetchCart = () => {
     const cartData = getShoppingCart();
@@ -94,31 +99,111 @@ const Navbar = () => {
       </div>
 
       {/* Navbar */}
-      <div className="navbar hidden md:block fixed z-30 bg-white px-9 py-4">
-        <div className="flex justify-between w-full">
-          <Link href="/">
-            <img
-              className="w-52 cursor-pointer"
-              src="https://fabrilife.com/img/fabrilife.svg"
-              alt="Logo"
-            />
-          </Link>
-
-          <h3>Shop</h3>
-
-          <div className="relative w-[600px]">
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-full pr-10 h-10 border border-gray-300 rounded-none"
-            />
-            <p className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500">
-              <FaSearch />
-            </p>
+      <div className="navbar fixed flex justify-between z-30 bg-white py-4 md:block md:px-9">
+      {/* Navbar Start for Mobile */}
+      <div className="navbar-start flex items-center justify-between md:justify-start">
+        {/* Mobile Dropdown Menu */}
+        <div className="dropdown md:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
           </div>
-<Navcart />
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10"
+          >
+            <li>
+              <a>Item 1</a>
+            </li>
+            <li>
+              <a>Parent</a>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>Item 3</a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Mobile Logo */}
+        <Link href="/" className="md:hidden">
+          <img
+            className="w-36 cursor-pointer"
+            src="https://fabrilife.com/img/fabrilife.svg"
+            alt="Logo"
+          />
+        </Link>
+      </div>
+
+      {/* Navbar Content for Desktop */}
+      <div className="hidden md:flex items-center justify-between w-full">
+        {/* Desktop Logo */}
+        <Link href="/" className="hidden md:block">
+          <img
+            className="w-52 cursor-pointer"
+            src="https://fabrilife.com/img/fabrilife.svg"
+            alt="Logo"
+          />
+        </Link>
+
+        {/* Shop Section */}
+        <h3 className="hidden md:block">Shop</h3>
+
+        {/* Search Bar */}
+        <div className="relative hidden md:block w-[600px]">
+          <input
+            type="text"
+            placeholder="Search"
+            className="w-full pr-10 h-10 border border-gray-300 rounded-none"
+          />
+          <p className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500">
+            <FaSearch />
+          </p>
+        </div>
+
+        {/* Cart Icon */}
+        <div className="z-30 w-auto">
+          <Navcart />
         </div>
       </div>
+
+      {/* Mobile Search Button and Dropdown */}
+      <div className="flex md:hidden gap-3 mr-[6vw] items-center">
+        <FaSearch onClick={toggleSearch} className="cursor-pointer" />
+        <Navcart />
+      </div>
+
+      {/* Dropdown Search Input */}
+      {isSearchOpen && (
+        <div className="absolute top-16 left-0 w-full bg-white shadow-md p-4 z-20">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="w-full h-10 border border-gray-300 rounded-md px-3"
+          />
+        </div>
+      )}
+    </div>
+
     </>
   );
 };

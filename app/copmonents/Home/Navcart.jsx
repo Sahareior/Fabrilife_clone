@@ -20,7 +20,7 @@ const Navcart = () => {
     return (
         <div>
           
-          <div className="flex justify-center pr-14 items-center gap-2">
+          <div className="flex justify-center md:pr-14 items-center gap-2">
             <Link href="/cart" className="text-xl">
               <FaCartShopping />
             </Link>

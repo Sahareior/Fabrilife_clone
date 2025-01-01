@@ -109,13 +109,13 @@ const Details = () => {
   };
 
   const decreaseQuantity = () => {
-    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1)); // Ensure minimum of 1
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1)); 
   };
 
   const handleInputChange = (e) => {
     const value = parseInt(e.target.value, 10);
     if (!isNaN(value) && value >= 1) {
-      setQuantity(value); // Update if the value is a valid number and >= 1
+      setQuantity(value); 
     }
   };
 
@@ -123,141 +123,126 @@ const Details = () => {
 
   const addToCart = (id) => {
     if (!id) {
-      addToDb(12, quantity); // Pass quantity for a default item ID
+      addToDb(12, quantity); 
       return;
     }
-    addToDb(id, quantity); // Pass the correct ID and quantity
+    addToDb(id, quantity); 
   };
 console.log(selectedData)
   return (
 <div className="w-full md:mt-16 md:p-7 p-1 md:w-[87%] mx-auto">
-<div className="bg-gray-50 min-h-screen flex flex-col lg:flex-row gap-6 items-center lg:items-start mt-6">
-      <div className="flex flex-col lg:flex-row gap-5 bg-white  justify-center rounded-lg">
-        {/* Product Image and Frequently Bought Together */}
-        <div className="flex md:w-[570px] flex-col items-center">
-          <img
-            className=" md:h-[650px] h-full w-full rounded-lg shadow-md"
-            src={displayItem?.img}
-            alt="Mens Premium Sweatshirt"
-          />
-          <div className="mt-4 ">
-            <h1 className=" mb-3  text-lg">Frequently Bought Together</h1>
-           <div className="bg-black w-full h-1"></div>
-           <div className="flex  md:gap-6 md:p-4 gap-2 p-1 bg-white rounded-lg shadow-md hover:shadow-lg transition">
-  {/* Product Image */}
-  <img
-    className="w-40 bg-black h-44 object-cover rounded-lg border border-gray-200"
-    src="https://fabrilife.com/products/6743162d5c2d3-square.jpg"
-    alt="Mens Premium Sports Active Wear Full Sleeve T-shirt"
-  />
+  <div className="bg-gray-50 min-h-screen flex flex-col lg:flex-row gap-6 items-center lg:items-start mt-6">
+    <div className="flex flex-col lg:flex-row gap-5 bg-white justify-center rounded-lg shadow-lg p-4">
 
-  {/* Product Details */}
-  <div className="flex flex-col  w-full">
-    {/* Product Title */}
-    <h2 className=" text-[16px] text-gray-800 hover:text-blue-500 transition">
-      Mens Premium Sports Active Wear Full Sleeve T-shirt - Kick Off
-    </h2>
+      <div className="flex md:w-[570px] flex-col items-center">
+        <img
+          className="md:h-[650px] h-full w-full rounded-lg shadow-md hover:shadow-lg transition"
+          src={displayItem?.img}
+          alt="Mens Premium Sweatshirt"
+        />
+        <div className="mt-4 w-full">
+          <h1 className="mb-3 text-lg font-semibold">Frequently Bought Together</h1>
+          <div className="bg-gray-300 w-full h-[2px] mb-4"></div>
+          <div className="flex md:gap-6 md:p-4 gap-2 p-2 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+          
+            <img
+              className="w-40 h-44 object-cover rounded-lg border border-gray-200"
+              src="https://fabrilife.com/products/6743162d5c2d3-square.jpg"
+              alt="Mens Premium Sports Active Wear Full Sleeve T-shirt"
+            />
 
-    {/* Price Section */}
-    <div className="flex items-center gap-3 text-gray-600 mt-2">
-      <p className="text-[16px] font-bold text-blue-500">৳ 1000</p>
-      <p className="line-through text-sm">৳ 1222</p>
-    </div>
-
-    {/* Add to Cart Button */}
-    <button onClick={()=> addToCart(9)} className="mt-4 px-6 py-2 w-44 bg-black w-xs text-white font-medium rounded-md hover:bg-blue-600 transition">
-      Add to Cart
-    </button>
-  </div>
-</div>
-
-          </div>
-        </div>
-
-        {/* Product Details */}
-        <div className="flex flex-col w-full md:w-[50%] gap-4">
-          <div>
-            <h2 className=" text-[24px] text-gray-800">
-           {displayItem?.name}
-            </h2>
-            <p className="font-extrabold text-2xl text-black mt-2">৳ {displayItem?.price}</p>
-          </div>
-
-          {/* Size Selection */}
-          <div>
-            <p className="font-medium text-gray-600">Select Size</p>
-            <div className="flex gap-4 mt-2">
-              <button className="px-4 py-2 border rounded-md bg-white  hover:bg-gray-200 transition">
-                M
-              </button>
-              <button className="px-4 py-2 border rounded-md bg-white  hover:bg-gray-200 transition">
-                L
-              </button>
-              <button className="px-4 py-2 border rounded-md bg-white  hover:bg-gray-200 transition">
-                XL
+          
+            <div className="flex flex-col w-full">
+              <h2 className="text-sm font-medium text-gray-800 hover:text-blue-500 transition">
+                Mens Premium Sports Active Wear Full Sleeve T-shirt - Kick Off
+              </h2>
+              <div className="flex items-center gap-3 text-gray-600 mt-2">
+                <p className="text-sm font-bold text-blue-500">৳ 1000</p>
+                <p className="line-through text-xs">৳ 1222</p>
+              </div>
+              <button
+                onClick={() => addToCart(9)}
+                className="mt-4 px-4 py-2 bg-black w-32 text-white text-sm font-medium rounded-none hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              >
+                Add to Cart
               </button>
             </div>
           </div>
-
-          {/* Quantity and Add to Cart */}
-          <div className="flex gap-4">
-      <div className="flex items-center gap-2">
-        {/* Decrease Button */}
-        <button
-          onClick={decreaseQuantity}
-          className="px-4 py-2 border rounded-md bg-gray-100 hover:bg-gray-200 transition"
-        >
-          -
-        </button>
-
-        {/* Quantity Input */}
-        <input
-          type="number"
-          value={quantity}
-          onChange={handleInputChange}
-          className="w-12 text-center border rounded-md"
-          min="1"
-        />
-
-        {/* Increase Button */}
-        <button
-          onClick={increaseQuantity}
-          className="px-4 py-2 border rounded-md bg-gray-100 hover:bg-gray-200 transition"
-        >
-          +
-        </button>
+        </div>
       </div>
 
-      {/* Add to Cart Button */}
-      <button onClick={()=> addToCart()} className=" px-4 py-2 bg-black w-sm text-white rounded-md hover:bg-blue-600 transition">
-        Add to Cart
-      </button>
-    </div>
+      <div className="flex flex-col w-full md:w-[50%] gap-4">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800">{displayItem?.name}</h2>
+          <p className="text-2xl font-extrabold text-black mt-2">৳ {displayItem?.price}</p>
+        </div>
 
-          {/* Divider */}
-          <hr className="border-gray-300 my-4" />
-
-          {/* Product Description */}
-          <p className="text-gray-600 text-[14px] ">
-            Fabrilife Men's Premium Quality Sports t-shirts are smooth and
-            comfortable. The t-shirts are made with the finest quality polyester
-            fabric, perfect for casual or sports wear.
-          </p>
-
-          {/* Detailed Specifications */}
-          <div className="text-gray-600 text-[14px] ">
-            <h3 className="font-bold text-lg">Detailed Specification:</h3>
-            <ul className="list-disc list-inside text-gray-600 mt-2">
-              <li>High-quality polyester fabric</li>
-              <li>Soft and comfortable</li>
-              <li>Perfect for casual or sports wear</li>
-              <li>Durable and long-lasting</li>
-              <li>Machine washable</li>
-            </ul>
+     
+        <div>
+          <p className="font-medium text-gray-600">Select Size</p>
+          <div className="flex gap-4 mt-2">
+            {["M", "L", "XL"].map((size) => (
+              <button
+                key={size}
+                className="px-4 py-2 border rounded-md bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition"
+              >
+                {size}
+              </button>
+            ))}
           </div>
+        </div>
 
-          {/* Size Chart */}
-          <div>
+  
+        <div className="flex gap-4 ">
+          <div className="flex items-center border border-slate-500 gap-2">
+            <button
+              onClick={decreaseQuantity}
+              className="px-4 py-2 border rounded-md bg-white text-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              value={quantity}
+              onChange={handleInputChange}
+              className="w-12 text-center border rounded-md"
+              min="1"
+            />
+            <button
+              onClick={increaseQuantity}
+              className="px-4 py-2 border rounded-md bg-white font-bold text-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
+            >
+              +
+            </button>
+          </div>
+          <button
+            onClick={() => addToCart()}
+            className="px-4 py-2  text-white rounded-none bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          >
+            Add to Cart
+          </button>
+        </div>
+
+       
+        <hr className="border-gray-300 my-4" />
+  
+        <p className="text-sm text-gray-600">
+          Fabrilife Men's Premium Quality Sports t-shirts are smooth and comfortable. The t-shirts are made with the
+          finest quality polyester fabric, perfect for casual or sports wear.
+        </p>
+
+        <div className="text-sm text-gray-600">
+          <h3 className="font-bold text-lg">Detailed Specification:</h3>
+          <ul className="list-disc list-inside mt-2 space-y-1">
+            <li>High-quality polyester fabric</li>
+            <li>Soft and comfortable</li>
+            <li>Perfect for casual or sports wear</li>
+            <li>Durable and long-lasting</li>
+            <li>Machine washable</li>
+          </ul>
+        </div>
+
+        <div>
             <h3 className="font-bold text-[14px] ">
               Size chart - In inches (Expected Deviation &lt; 3%)
             </h3>
@@ -300,17 +285,20 @@ console.log(selectedData)
               </tbody>
             </table>
           </div>
-      <h1 className="text-center text-blue-400 hover:underline">Share</h1>
-      <div className="flex gap-5 justify-center items-center">
-<p className="text-2xl"><FaInstagram /></p>
-<p className="text-2xl"><IoLogoTwitter /></p>
-      </div>
+
+        {/* Share Section */}
+        <h1 className="text-center text-blue-500 hover:underline cursor-pointer">Share</h1>
+        <div className="flex gap-5 justify-center items-center text-blue-500">
+          <FaInstagram className="text-2xl cursor-pointer hover:scale-110 transition" />
+          <IoLogoTwitter className="text-2xl cursor-pointer hover:scale-110 transition" />
         </div>
       </div>
     </div>
-      <LoadData selectedItem={selectedItem} data={data1}/>
-      <LoadData  selectedItem={selectedItem} data={data1}/>
+  </div>
+  <LoadData selectedItem={selectedItem} data={data1} />
+  <LoadData selectedItem={selectedItem} data={data1} />
 </div>
+
   );
 };
 

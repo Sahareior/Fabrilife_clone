@@ -19,6 +19,16 @@
   }
 }
 
+.dropdown:hover .up-arrow {
+  transform: rotate(-180deg);
+}
+.dropdown-link:hover {
+  transition: 0.3s;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

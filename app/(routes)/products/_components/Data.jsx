@@ -40,15 +40,15 @@ const Data = ({ data }) => {
   };
 
   const handleDetailsClick = (item) => {
-    setSelectedItem(item); // Set the selected item in the Zustand store
+    setSelectedItem(item); 
   };
 
   return (
     <div className="mt-5">
-      <div className="grid grid-cols-2 justify-items-center sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 sm:pr-6 lg:pr-9">
+      <div className="grid px-4 grid-cols-2 justify-items-center sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 sm:pr-6 lg:pr-9">
         {data.length > 0 ? (
           data.map((item) => (
-            <div key={item.id} className="md:w-56 w-[50vw]">
+            <div key={item.id} className="md:w-56 w-[48vw]">
               <Link href="/details" onClick={() => handleDetailsClick(item)}>
                 <img src={item.img} alt={item.name} className="w-full h-auto" />
               </Link>

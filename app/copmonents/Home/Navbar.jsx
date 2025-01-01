@@ -9,15 +9,22 @@ import { getShoppingCart } from "../others/useTools";
 import Navcart from "./Navcart";
 import { FaArrowRight } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
+import { FaAngleDown } from "react-icons/fa6";
 import { FaTruck } from "react-icons/fa";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { IoMdExit } from "react-icons/io";
+import { Modal } from "./NavbarComponents/Modal";
+import DropdownItems from "./NavbarComponents/DropdownItems";
+
 
 const Navbar = () => {
   const [showTopBar, setShowTopBar] = useState(true);
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => setIsDrawerOpen((prev) => !prev);
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
@@ -64,7 +71,7 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Add a dynamic height adjustment */}
+
       <div
         className={`transition-all hidden md:block duration-300 ${
           showTopBar ? "h-[40px]" : "h-[0.1px]"
@@ -98,53 +105,37 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Navbar */}
-      <div className="navbar fixed flex justify-between z-30 bg-white py-4 md:block md:px-9">
-      {/* Navbar Start for Mobile */}
-      <div className="navbar-start flex items-center justify-between md:justify-start">
-        {/* Mobile Dropdown Menu */}
-        <div className="dropdown md:hidden">
-          <div tabIndex={0} role="button" className="btn btn-ghost">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
-        </div>
+  
+      <div className="navbar  md:fixed flex  justify-between z-30 bg-white py-4 md:block md:px-9">
 
-        {/* Mobile Logo */}
+      <div className="navbar-start flex items-center justify-between md:justify-start">
+ 
+        <div className="md:hidden relative">
+      <div
+        tabIndex={0}
+        role="button"
+        className="btn btn-ghost"
+        onClick={toggleDrawer}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h8m-8 6h16"
+          />
+        </svg>
+      </div>
+      <Modal isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+    </div>
+
+
         <Link href="/" className="md:hidden">
           <img
             className="w-36 cursor-pointer"
@@ -154,9 +145,38 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Navbar Content for Desktop */}
-      <div className="hidden md:flex items-center justify-between w-full">
-        {/* Desktop Logo */}
+
+      <div className="hidden  md:flex items-center justify-between w-full">
+
+        <div className=" flex justify-center items-center gap-3">
+{
+  !showTopBar && (
+    <div className=" relative">
+    <div
+      tabIndex={0}
+      role="button"
+      className="btn btn-ghost"
+      onClick={toggleDrawer}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M4 6h16M4 12h8m-8 6h16"
+        />
+      </svg>
+    </div>
+    <Modal isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+  </div>
+  )
+}
         <Link href="/" className="hidden md:block">
           <img
             className="w-52 cursor-pointer"
@@ -164,12 +184,21 @@ const Navbar = () => {
             alt="Logo"
           />
         </Link>
+        </div>
 
-        {/* Shop Section */}
-        <h3 className="hidden md:block">Shop</h3>
+        {
+          showTopBar && (
+<>
 
-        {/* Search Bar */}
-        <div className="relative hidden md:block w-[600px]">
+<div className="relative hidden md:block group">
+  <div className="cursor-pointer flex justify-center items-center gap-3">Shop <FaAngleDown /></div>
+  {/* Dropdown Menu */}
+  <div className="absolute left-0  mt-1 w-[65vw] mx-auto bg-white shadow-lg rounded-lg opacity-0 group-hover:opacity-100 group-hover:visible invisible transition-opacity duration-200 z-20">
+  <DropdownItems />
+  </div>
+</div>
+
+          <div className="relative hidden md:block w-[600px]">
           <input
             type="text"
             placeholder="Search"
@@ -179,20 +208,32 @@ const Navbar = () => {
             <FaSearch />
           </p>
         </div>
+</>
+        )
+        }
 
-        {/* Cart Icon */}
-        <div className="z-30 w-auto">
+
+{
+  
+}
+
+
+        <div className="z-30 flex justify-center items-center gap-5 w-auto">
+          {
+            !showTopBar && (
+              <> <FaSearch /></>
+            )
+          }
           <Navcart />
         </div>
       </div>
 
-      {/* Mobile Search Button and Dropdown */}
+
       <div className="flex md:hidden gap-3 mr-[6vw] items-center">
         <FaSearch onClick={toggleSearch} className="cursor-pointer" />
         <Navcart />
       </div>
 
-      {/* Dropdown Search Input */}
       {isSearchOpen && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-md p-4 z-20">
           <input

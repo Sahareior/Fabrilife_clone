@@ -8,7 +8,7 @@ const Modal = ({ open, onClose, item }) => {
     if (open) {
       setIsVisible(true);
     } else {
-      setTimeout(() => setIsVisible(false), 300); // Allow the exit animation to complete
+      setTimeout(() => setIsVisible(false), 300); 
     }
   }, [open]);
 

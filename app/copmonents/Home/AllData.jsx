@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const AllData = ({ data }) => {
-  // Check if data is undefined or null
+
   if (!data || data.length === 0) {
     return <p>Loading...</p>;
   }

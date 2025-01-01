@@ -153,22 +153,23 @@ const page = () => {
 
     const handleFilterChange = (filters) => {
       if (filters.length === 0) {
-        setFilteredData(data); // Show all if no filters are selected
+        setFilteredData(data); 
       } else {
         setFilteredData(data.filter((item) => filters.includes(item.category)));
       }
     };
     return (
-        <div className="w-full h-screen mx-auto mt-20">
+        <div className="w-full  mx-auto md:mt-20">
+          
         <div className="flex gap-2">
-          {/* Sticky Sidebar */}
+   
           <div className="w-[25%] h-[90vh] hidden md:block overflow-y-auto sticky top-20">
             <FilterSidebar data={data1} onFilterChange={handleFilterChange} />
           </div>
       
-          {/* Main Content */}
+    
           <div className="md:w-[75%] mx-auto w-full">
-            <div className="relative w-full md:w-[94%] mb-4">
+            <div className="relative w-full  md:w-[94%] mb-4">
               <input
                 type="text"
                 placeholder="Search"

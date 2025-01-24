@@ -143,6 +143,9 @@ const Navbar = () => {
             alt="Logo"
           />
         </Link>
+        <Link href='/dashboard'>
+        <button className="btn btn-secondary btn-xs">Das</button>
+        </Link>
       </div>
 
 
@@ -232,6 +235,7 @@ const Navbar = () => {
       <div className="flex md:hidden gap-3 mr-[6vw] items-center">
         <FaSearch onClick={toggleSearch} className="cursor-pointer" />
         <Navcart />
+
       </div>
 
       {isSearchOpen && (
